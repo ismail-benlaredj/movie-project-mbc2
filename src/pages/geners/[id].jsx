@@ -5,13 +5,15 @@ import MainLayout from '@/layouts/mainLayout';
 import Link from 'next/link';
 
 export default function MoviePage({ moviedata }) {
-    console.log("moviedata :", moviedata)
+    console.log("moviedata walidddddd:", moviedata)
     return (
         <MainLayout>
+            {/* <h2>{name}MOVIES</h2>
+            <hr className='my-4'></hr> */}
             <div className="flex flex-row flex-wrap gap-6 justify-around">
 
                 {moviedata.results.map((movie, index) => (
-                    <Link key={index} href={`/geners/${movie.id}`}>
+                    <Link key={index} href={`/movies/${movie.id}`}>
                         <MovieCard key={index} {...movie} />
                     </Link>
                 ))}
@@ -22,7 +24,6 @@ export default function MoviePage({ moviedata }) {
 export async function getServerSideProps(context) {
     const { id } = context.query
     console.log(id)
-    const apiKey = "063e5e3006d7a06ead3459291526c522";
     try {
         const movieId = parseInt(id);
         if (!isNaN(movieId)) {
