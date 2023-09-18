@@ -1,5 +1,13 @@
 import { Inter } from "next/font/google"
 
+
+const inter = Inter({ subsets: ["latin"] })
+
+export default function Homepage() {
+  return (
+    <div>
+      
+    </div>
 import MainLayout from "@/layouts/mainLayout"
 import ActorId from "@/pages/actors/[actorId]"
 import Actors from "@/pages/actors/index"
