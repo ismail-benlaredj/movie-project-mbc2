@@ -1,12 +1,7 @@
-import Image from "next/image"
 import { Inter } from "next/font/google"
-import Head from "next/head"
-import NavBar from "../components/NavBar"
-import Footer from "../components/Footer"
-import Card from "../components/Card"
-import Search from "../components/Search"
-import MovieInfo from "../components/MovieInfo"
-import Link from "next/link"
+
+import MainLayout from "@/layouts/mainLayout"
+
 
 export default function Home({ movieList, movieInfo }) {
   console.log(movieInfo)
@@ -38,6 +33,9 @@ export async function getStaticProps() {
       movieList: data,
     },
   }
+
+   
+
 }
 
 // export async function getStaticProps2() {
