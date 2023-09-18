@@ -6,7 +6,7 @@ function About() {
       <div className="container mx-auto py-12">
         <div className="w-full lg:w-2/3 mx-auto">
           <img
-            src="../images/banner.jpg"
+            src="/images/banner.jpg"
             alt="About Us"
             className="w-full h-auto rounded-lg shadow-lg"
           />
