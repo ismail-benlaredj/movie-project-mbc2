@@ -1,16 +1,17 @@
 import { Inter } from "next/font/google"
 
 import MainLayout from "@/layouts/mainLayout"
+import ActorId from "@/pages/actors/[actorId]"
+import Actors from "@/pages/actors/index"
 
 
 export default function Home({ movieList, movieInfo }) {
   console.log(movieInfo)
   return (
-    <div>
-      <NavBar />
+    <>
+      <Actors />
+    </>
 
-      <Footer />
-    </div>
   )
 }
 

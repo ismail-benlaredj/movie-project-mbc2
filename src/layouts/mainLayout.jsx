@@ -35,7 +35,7 @@ export default function MainLayout({ children }) {
               <li className="inline-block px-4 py-2">
                 <Link href={"/contact"}>Movie releases</Link>
               </li>
-              <li className="inline-block px-4 py-2">
+              <li className="inline-block px-4 py-2  ">
                 <Link href={"/contact"}>About</Link>
               </li>
             </ul>

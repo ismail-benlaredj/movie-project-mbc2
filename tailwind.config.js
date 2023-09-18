@@ -12,6 +12,10 @@ module.exports = {
       center: true,
     },
     extend: {
+      colors:{
+        darkblue:"#0d0c0f",
+        brightRed: 'hsl(12,88%,70%)',
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
