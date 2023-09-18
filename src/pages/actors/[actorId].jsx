@@ -1,6 +1,5 @@
 import MainLayout from "@/layouts/mainLayout"
-export default function ActorId({actorData,actors}){
-    console.log(actors.results)
+export default function ActorId({actorData,movi}){
     let gen="";
     console.log(actorData.gender)
     if (actorData.gender===1 ) gen="Female"
@@ -34,12 +33,18 @@ export default function ActorId({actorData,actors}){
     <div className="container pt-10  ">
     <h2 className="text-brightRed">Related Movies </h2>
     <div  className="flex flex-wrap	">
-        <h3>{(actors.id===actorData.id)&& (<h3>actor.id</h3>) } </h3>
 
-         <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
-            <img className=" rounded-lg   "src ="/img/images.jpg" alt=""/> 
-            <h4 className="text-white text-center">movie title</h4>
-        </div>
+    {movi.cast.map(mv=>{
+           return(
+            <Link href={`/movies/${movie.id}`}>
+            <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
+                <img className=" rounded-lg max-w-sm" src ={"https://image.tmdb.org/t/p/w500/"+mv.poster_path} /> 
+                <h4 className="text-white text-center">{mv.title}</h4>
+            </div>
+            </Link>
+           )})}
+
+     
     </div>
 </div>
 </div> 
@@ -49,10 +54,9 @@ export default function ActorId({actorData,actors}){
 }
 export async function getServerSideProps(context)
 {
-    const {actorId}= context.query
-    console.log(actorId);
+const {actorId}= context.query
 const url = `https://api.themoviedb.org/3/person/${actorId}?language=en-US`;
-const url2 = 'https://api.themoviedb.org/3/person/popular?language=en-US&page=1';
+const url2 = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`;
 const options = {
   method: 'GET',
   headers: {
@@ -62,12 +66,13 @@ const options = {
 };
 const response=await fetch(url,options)
 const response2=await fetch(url2,options)
+
 const data2=await response2.json()
 const data=await response.json()
 return{
     props:{
         actorData:data,
-        actors:data2,
+        movi:data2,
     },
 }
 }
