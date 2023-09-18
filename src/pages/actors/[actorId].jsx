@@ -1,79 +1,79 @@
 import MainLayout from "@/layouts/mainLayout"
-export default function ActorId({actorData,movi}){
-    let gen="";
-    console.log(actorData.gender)
-    if (actorData.gender===1 ) gen="Female"
-    else if (actorData.gender===2 ) gen="Male"
+import { IMAGE_URL } from "@/constants"
+import { fetchApi } from "@/util/fetchApi"
+import { SINGLE_ACTOR, MOVIES_BY_ACTOR } from "@/constants"
+import Link from "next/link"
 
-    return (
-        
+export default function ActorId({ actorDetails, actorMovies }) {
+  let gen = ""
+  if (actorDetails.gender === 1) gen = "Female"
+  else if (actorDetails.gender === 2) gen = "Male"
+
+  return (
     <MainLayout>
-    <div className="bg-darkblue   w-screen  absolute left-0  top-80">
-    <nav className="flex  container pt-10  justify-start " >
+      <div className="bg-darkblue   w-screen  absolute left-0  top-80">
+        <nav className="flex  container pt-10  justify-start ">
+          <div className="items-center">
+            <img
+              className="rounded-lg max-w-sm"
+              src={IMAGE_URL + actorDetails.profile_path}
+              alt={actorDetails.name}
+            />
+          </div>
+          <div className="flex flex-col px-20">
+            <h1 className="text-brightRed p-3  text-3xl">
+              {actorDetails.name}
+            </h1>
 
-        <div className="items-center">      
-             <img  className="rounded-lg max-w-sm" src ={"https://image.tmdb.org/t/p/w500/"+actorData.profile_path} alt=""/>   
-        </div>
-        <div className="flex flex-col px-20">
-            <h1 className="text-brightRed p-3  text-3xl">{actorData.name}</h1>
-      
             <h3 className="text-white">Gender: {gen}</h3>
-            <h3 className="text-white">Born: {actorData.birthday}</h3>
-            <h3 className="text-white">Place of birth: {actorData.place_of_birth}</h3>
-            <h3 className="text-white">Popularity: {actorData.popularity}</h3>
-            
+            <h3 className="text-white">Born: {actorDetails.birthday}</h3>
+            <h3 className="text-white">
+              Place of birth: {actorDetails.place_of_birth}
+            </h3>
+            <h3 className="text-white">
+              Popularity: {actorDetails.popularity}
+            </h3>
+          </div>
+        </nav>
+        <div className="container pt-10  ">
+          <h2 className="text-brightRed">Biography</h2>
+          <p className="text-white">{actorDetails.biography}</p>
         </div>
-    </nav>
-    <div  className="container pt-10  ">
-        <h2 className="text-brightRed">Biography</h2>
-        <p className="text-white">
-                {actorData.biography}
-        </p>
-    </div>
-    <div className="container pt-10  ">
-    <h2 className="text-brightRed">Related Movies </h2>
-    <div  className="flex flex-wrap	">
-
-    {movi.cast.map(mv=>{
-           return(
-            <Link href={`/movies/${movie.id}`}>
-            <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
-                <img className=" rounded-lg max-w-sm" src ={"https://image.tmdb.org/t/p/w500/"+mv.poster_path} /> 
-                <h4 className="text-white text-center">{mv.title}</h4>
-            </div>
-            </Link>
-           )})}
-
-     
-    </div>
-</div>
-</div> 
-   </MainLayout>
-        
-    )
+        <div className="container pt-10  ">
+          <h2 className="text-brightRed">Related Movies </h2>
+          <div className="flex flex-wrap	">
+            {actorMovies.cast.map((movie) => {
+              return (
+                <Link key={movie.id} href={`/movies/${movie.id}`}>
+                  <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
+                    <img
+                      className=" rounded-lg max-w-sm"
+                      src={IMAGE_URL + movie.poster_path}
+                    />
+                    <h4 className="text-white text-center">{movie.title}</h4>
+                  </div>
+                </Link>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+    </MainLayout>
+  )
 }
-export async function getServerSideProps(context)
-{
-const {actorId}= context.query
-const url = `https://api.themoviedb.org/3/person/${actorId}?language=en-US`;
-const url2 = `https://api.themoviedb.org/3/person/${actorId}/movie_credits?language=en-US`;
-const options = {
-  method: 'GET',
-  headers: {
-    accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwNjNlNWUzMDA2ZDdhMDZlYWQzNDU5MjkxNTI2YzUyMiIsInN1YiI6IjY1MDQzMzI5NmEyMjI3MDEzNzJlZWIwOSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qPi94OH9K-txlJdxtOrL-s_FMfLaZP-leFYY1_qbw1o'
-  }
-};
-const response=await fetch(url,options)
-const response2=await fetch(url2,options)
+export async function getServerSideProps(context) {
+  const { actorId } = context.query
 
-const data2=await response2.json()
-const data=await response.json()
-return{
-    props:{
-        actorData:data,
-        movi:data2,
+  const actorDetails = await fetchApi(
+    SINGLE_ACTOR + actorId + "?language=en-US",
+  )
+  const actorMovies = await fetchApi(
+    SINGLE_ACTOR + actorId + MOVIES_BY_ACTOR + "?language=en-US",
+  )
+  return {
+    props: {
+      actorDetails,
+      actorMovies,
     },
+  }
 }
-}
-
