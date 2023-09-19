@@ -22,7 +22,9 @@ const MoviePoster = ({ movie }) => {
               <h3 className="text-xl font-semibold">{movie.title}</h3>
               <div className="flex flex-row justify-start gap-2 items-center">
                 <BsStarHalf color="yellow" />
-                <span>{movie.vote_average.toFixed(1)}</span>
+                <span>
+                  {movie.vote_average && movie.vote_average.toFixed(1)}
+                </span>
                 <span>|</span>
                 <span className="opacity-80">Action</span>
                 <span className="opacity-80">•</span>

@@ -457,7 +457,7 @@ const MovieDetails = ({ movie, actors, similarMovies, movieVideoId }) => {
               <span>|</span>
               <span className="flex flex-row items-center">
                 <BsStarHalf color="yellow" />
-                {movie.vote_average.toFixed(1)}
+                {movie.vote_average && movie.vote_average.toFixed(1)}
               </span>
             </div>
             <div className="flex flex-row text-lg gap-2">

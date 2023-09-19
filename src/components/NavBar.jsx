@@ -70,7 +70,7 @@ const Navbar = () => {
                       <p className="text-lg font-semibold">{movie.title}</p>
                     </div>
                     <p className="text-lg font-black text-yellow-500">
-                      {movie.vote_average.toFixed(1)}
+                      {movie.vote_average && movie.vote_average.toFixed(1)}
                     </p>
                   </Link>
                 ))}
