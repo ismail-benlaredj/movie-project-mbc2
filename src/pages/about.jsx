@@ -1,11 +1,9 @@
 import React from "react"
-import NavBar from "@/components/NavBar"
 import Footer from "@/components/Footer"
 
 function About() {
   return (
     <div>
-      <NavBar />
       <div className="bg-gray-100">
         <div className="container mx-auto py-12">
           <div className="w-full lg:w-2/3 mx-auto">
@@ -63,7 +61,6 @@ function About() {
             <img href="./imges/git.png"></img>
           </a>
         </div>
-        <Footer />
       </div>
     </div>
   )
