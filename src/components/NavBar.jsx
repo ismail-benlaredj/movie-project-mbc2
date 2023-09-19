@@ -3,7 +3,9 @@ import Link from "next/link"
 import { useState } from "react"
 import { AiOutlineSearch } from "react-icons/ai"
 import { fetchApi } from "@/util/FetchApi"
-import { IMAGE_URL, SEARCH_MOVIE } from "@/constants"
+import { IMAGE_URL, SEARCH_MOVIE, MOVIES_FILTER } from "@/constants"
+import DropdownWithFetch from "@/components/DropdownWithFetch"
+import Dropdown from "@/components/Dropdown"
 
 const Navbar = () => {
   const [searchList, setSearchList] = useState([])
@@ -30,10 +32,10 @@ const Navbar = () => {
             <Link href={"/"}>Home</Link>
           </li>
           <li className="inline-block px-4 py-2">
-            <Link href={"/about"}>Discover</Link>
+            <DropdownWithFetch />
           </li>
           <li className="inline-block px-4 py-2">
-            <Link href={"/contact"}>Movie releases</Link>
+            <Dropdown genresList={MOVIES_FILTER} lable="Movies Filter" />
           </li>
           <li className="inline-block px-4 py-2">
             <Link href={"/contact"}>About</Link>
