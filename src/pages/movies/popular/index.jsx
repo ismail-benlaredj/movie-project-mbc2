@@ -1,34 +1,22 @@
 import React from "react"
 import MainLayout from "@/layouts/mainLayout"
-import MovieCard from "@/component/movieCard"
-import Link from "next/link"
+import MoviesList from "@/components/moviesList"
 import { fetcher } from "@/util/api"
 
-export default function NowPlaying({ allMovies }) {
-  console.log("moviesprom :", allMovies)
-  // // console.log("geea3 movies :", allMovies)
-  // console.log("id :", id)
+export default function Popular({ movies }) {
   return (
     <MainLayout>
-      {/* <h2>{name}MOVIES</h2>
-            <hr className='my-4'></hr> */}
-      <div className="flex flex-row flex-wrap gap-6 justify-around">
-        {allMovies.results.map((movie, index) => (
-          <Link key={index} href={`/movies/${movie.id}`}>
-            <MovieCard key={index} {...movie} />
-          </Link>
-        ))}
-      </div>
+      <h3 className="text-xl my-7 font-semibold">POPULAR MOVIES</h3>
+      <MoviesList movies={movies} />
     </MainLayout>
   )
 }
-export async function getServerSideProps(context) {
-  const { movielist } = context.query
+export async function getStaticProps() {
   const data = await fetcher(`movie/popular?language=en-US&page=1`)
 
   return {
     props: {
-      allMovies: data,
+      movies: data.results,
     },
   }
 }
