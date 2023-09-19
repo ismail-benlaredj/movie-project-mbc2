@@ -1,5 +1,5 @@
 import React from "react"
-import movieList from "./MovieList"
+import movieList from "./moviesList"
 
 const Card = ({ title, poster_path, release_date, id }) => {
   return (

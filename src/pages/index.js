@@ -1,33 +1,26 @@
 import { Inter } from "next/font/google"
 import MainLayout from "@/layouts/mainLayout"
+import { fetchApi } from "@/util/FetchApi"
+import MoviesList from "@/components/moviesList"
+import { ALL_MOVIES_API } from "@/constants"
 
 const inter = Inter({ subsets: ["latin"] })
 
-export default function Home({ movieList, movieInfo }) {
+export default function Home({ movies }) {
   return (
     <>
-      <MainLayout />
+      <MainLayout>
+        <MoviesList movies={movies} />
+      </MainLayout>
     </>
   )
 }
 
-// Fetching to Populer Movies list
-export async function getStaticProps() {
-  const url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-  const options = {
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyYzY5NGU0YWVhMGQ0MGZmOWNmYjQ5NzJmOWQzYmJmYyIsInN1YiI6IjY1MDM1ZmM3NjNhYWQyMDBlMTJjYTRkNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.bB3j5OZBoJsZvKOJws5XQZT9zZvFvc1jpw8tnmmUwkQ",
-    },
-  }
-
-  const response = await fetch(url, options)
-  const data = await response.json()
-
+export async function getServerSideProps() {
+  const res = await fetchApi(ALL_MOVIES_API)
   return {
     props: {
-      movieList: data,
+      movies: res.results,
     },
   }
 }
