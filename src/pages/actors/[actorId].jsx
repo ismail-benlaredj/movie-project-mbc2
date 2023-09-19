@@ -44,7 +44,7 @@ export default function ActorId({ actorDetails, actorMovies }) {
           <div className="flex flex-wrap	">
             {actorMovies.cast.map((movie) => {
               return (
-                <Link key={movie.id} href={`/movies/${movie.id}`}>
+                <Link key={movie.id} href={`/movie/${movie.id}`}>
                   <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
                     <img
                       className=" rounded-lg max-w-sm"
