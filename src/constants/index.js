@@ -17,3 +17,28 @@ export const ALL_MOVIES_API =
   SIMILAR_MOVIES = "/similar", // example : https://api.themoviedb.org/3/movie/{movie_id}/similar
   MOVIE_VIDEO = "/videos",
   SEARCH_MOVIE = "https://api.themoviedb.org/3/search/movie?query="
+
+// GENRES
+
+export const GENRES_LIST =
+  "https://api.themoviedb.org/3/genre/movie/list?language=en"
+
+//MOVIES RELEASES PAGES
+export const MOVIES_FILTER = [
+  {
+    name: "popular",
+    id: 1,
+  },
+  {
+    name: "toprated",
+    id: 2,
+  },
+  {
+    name: "upcoming",
+    id: 3,
+  },
+  {
+    name: "nowplaying",
+    id: 4,
+  },
+]
