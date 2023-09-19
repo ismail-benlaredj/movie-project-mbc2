@@ -1,21 +1,13 @@
 import React from "react"
-import MovieCard from "@/component/movieCard"
+import MoviesList from "@/components/moviesList"
 import { fetcher } from "@/util/api"
 import MainLayout from "@/layouts/mainLayout"
-import Link from "next/link"
 
-export default function MoviePage({ moviedata }) {
+
+export default function MoviePage({ movies }) {
   return (
     <MainLayout>
-      {/* <h2>{name}MOVIES</h2>
-            <hr className='my-4'></hr> */}
-      <div className="flex flex-row flex-wrap gap-6 justify-around">
-        {moviedata.results.map((movie, index) => (
-          <Link key={index} href={`/movies/${movie.id}`}>
-            <MovieCard key={index} {...movie} />
-          </Link>
-        ))}
-      </div>
+      <MoviesList movies={movies} />
     </MainLayout>
   )
 }
@@ -29,14 +21,14 @@ export async function getServerSideProps(context) {
       )
       return {
         props: {
-          moviedata: data,
+          movies: data.results,
         },
       }
     } else {
       const data = await fetcher(`movie/${id}?language=en-US&page=1`)
       return {
         props: {
-          moviedata: data,
+          movies: data.results,
         },
       }
     }
