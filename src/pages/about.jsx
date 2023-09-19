@@ -1,15 +1,12 @@
 import React from "react"
-import Navbar from "@/components/NavBar"
-import Footer from "@/components/Footer"
+import MainLayout from "@/layouts/mainLayout"
 
 function About() {
   return (
-    <div>
-      <Navbar />
+    <MainLayout>
       <div className="bg-black">
         <div className="container mx-auto py-12">
           <div className="max-w bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-900 dark:border-gray-700">
-            <img className="rounded-t-lg" src="/img/movie.jpg" alt="About Us" />
             <div className="mt-6">
               <h1 className="text-3xl font-semibold mb-5 mx-10">About Us</h1>
               <p className="text-gray-100 mb-2 mx-2">
@@ -60,7 +57,7 @@ function About() {
           </a>
         </div>
       </div>
-    </div>
+    </MainLayout>
   )
 }
 

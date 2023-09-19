@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer"
 import Navbar from "@/components/NavBar"
+import Footer from "@/components/Footer"
 
 export default function MainLayout({ children }) {
   return (
@@ -17,31 +17,6 @@ export default function MainLayout({ children }) {
         <Navbar />
       </section>
       <main className="py-10">{children}</main>
-      <footer>
-        <div className="flex flex-row justify-between mt-10">
-          <div className="flex flex-col">
-            <h3 className="text-2xl font-bold">Re:watch</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              voluptatum.
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <h3 className="text-2xl font-bold">Re:watch</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              voluptatum.
-            </p>
-          </div>
-          <div className="flex flex-col">
-            <h3 className="text-2xl font-bold">Re:watch</h3>
-            <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-              voluptatum.
-            </p>
-          </div>
-        </div>
-      </footer>
       <Footer />
     </div>
   )
