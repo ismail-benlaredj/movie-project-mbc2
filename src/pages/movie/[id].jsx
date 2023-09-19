@@ -6,7 +6,7 @@ import {
   MOVIE_VIDEO,
   YOUTUBE_LINK,
 } from "@/constants"
-import { fetchApi } from "@/util/fetchApi"
+import { fetchApi } from "@/util/FetchApi"
 import MainLayout from "@/layouts/mainLayout"
 import Image from "next/image"
 import { BsStarHalf } from "react-icons/bs"

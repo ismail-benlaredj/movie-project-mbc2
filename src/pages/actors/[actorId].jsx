@@ -1,6 +1,6 @@
 import MainLayout from "@/layouts/mainLayout"
 import { IMAGE_URL } from "@/constants"
-import { fetchApi } from "@/util/fetchApi"
+import { fetchApi } from "@/util/FetchApi"
 import { SINGLE_ACTOR, MOVIES_BY_ACTOR } from "@/constants"
 import Link from "next/link"
 

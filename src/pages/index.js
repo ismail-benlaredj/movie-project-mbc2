@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google"
 import MainLayout from "@/layouts/mainLayout"
-import { fetchApi } from "@/util/fetchApi"
+import { fetchApi } from "@/util/FetchApi"
 import MoviesList from "@/components/moviesList"
 import { ALL_MOVIES_API } from "@/constants"
 

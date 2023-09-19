@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiOutlineSearch } from "react-icons/ai"
-import { fetchApi } from "@/util/fetchApi"
+import { fetchApi } from "@/util/FetchApi"
 import { IMAGE_URL, SEARCH_MOVIE } from "@/constants"
 
 const Navbar = () => {
