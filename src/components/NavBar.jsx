@@ -38,7 +38,8 @@ const Navbar = () => {
             <Dropdown genresList={MOVIES_FILTER} lable="Movies Filter" />
           </li>
           <li className="inline-block px-4 py-2">
-            <Link href={"/contact"}>About</Link>
+            {/* <Link href={"/contact"}>About</Link> */}
+            <Link href="about">About</Link>
           </li>
         </ul>
       </div>
