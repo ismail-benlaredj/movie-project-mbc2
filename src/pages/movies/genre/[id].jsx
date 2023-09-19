@@ -2,11 +2,14 @@ import React from "react"
 import MoviesList from "@/components/moviesList"
 import { fetcher } from "@/util/api"
 import MainLayout from "@/layouts/mainLayout"
-
+import { useRouter } from "next/router"
 
 export default function MoviePage({ movies }) {
+  const router = useRouter()
+  const { name } = router.query
   return (
     <MainLayout>
+      <h1 className="text-4xl mb-8">{name + " Movies:"}</h1>
       <MoviesList movies={movies} />
     </MainLayout>
   )
