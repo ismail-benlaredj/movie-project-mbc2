@@ -3,7 +3,7 @@ import { IMAGE_URL } from "@/constants"
 import { fetchApi } from "@/util/FetchApi"
 import { SINGLE_ACTOR, MOVIES_BY_ACTOR } from "@/constants"
 import Link from "next/link"
-
+import MoviesList from "@/components/moviesList"
 export default function ActorId({ actorDetails, actorMovies }) {
   let gen = ""
   if (actorDetails.gender === 1) gen = "Female"
@@ -42,19 +42,7 @@ export default function ActorId({ actorDetails, actorMovies }) {
         <div className="container pt-10  ">
           <h2 className="text-brightRed">Related Movies </h2>
           <div className="flex flex-wrap	">
-            {actorMovies.cast.map((movie) => {
-              return (
-                <Link key={movie.id} href={`/movie/${movie.id}`}>
-                  <div className="p-5 flex flex-col hover:grayscale cursor-pointer ">
-                    <img
-                      className=" rounded-lg max-w-sm"
-                      src={IMAGE_URL + movie.poster_path}
-                    />
-                    <h4 className="text-white text-center">{movie.title}</h4>
-                  </div>
-                </Link>
-              )
-            })}
+            <MoviesList movies={actorMovies.cast} />
           </div>
         </div>
       </div>
