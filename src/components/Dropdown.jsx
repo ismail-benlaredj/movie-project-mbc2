@@ -1,26 +1,9 @@
 import Link from "next/link"
 import { useEffect, useState, useRef } from "react"
-import { fetchApi } from "@/util/FetchApi"
-import { GENRES_LIST } from "@/constants"
+import useOutside from "@/hooks/useOutside"
 
 const Dropdown = ({ genresList, url, lable }) => {
-  const [open, setOpen] = useState(false)
-  const wrapperRef = useRef(null)
-  useOutsideAlerter(wrapperRef)
-  function useOutsideAlerter(ref) {
-    useEffect(() => {
-      function handleClickOutside(event) {
-        if (ref.current && !ref.current.contains(event.target)) {
-          setOpen(false)
-        }
-      }
-
-      document.addEventListener("mousedown", handleClickOutside)
-      return () => {
-        document.removeEventListener("mousedown", handleClickOutside)
-      }
-    }, [ref])
-  }
+  const [open, setOpen, wrapperRef] = useOutside()
   return (
     <div className="relative" ref={wrapperRef}>
       <button

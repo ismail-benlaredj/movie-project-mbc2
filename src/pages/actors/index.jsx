@@ -1,5 +1,5 @@
 import MainLayout from "@/layouts/mainLayout"
-import CardA from "@/component/cardA.jsx"
+import CardA from "@/components/cardA.jsx"
 import { fetchApi } from "@/util/FetchApi"
 import { POPULAR_ACTORS } from "@/constants"
 import { Grid } from "@mui/material"
