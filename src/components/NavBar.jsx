@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
     <nav className="flex flex-row py-4 items-center justify-between">
       <Link href={"/"}>
-        <Image src="/logo.svg" alt="Re:watch logo" width={140} height={100} />
+        <img src="/logo.svg" alt="Re:watch logo" width={140} height={100} />
       </Link>
       <div className="">
         <ul>
@@ -63,7 +63,7 @@ const Navbar = () => {
                     className="flex flex-row justify-between items-center p-3  gap-2 hover:bg-black rounded-lg"
                   >
                     <div className="flex flex-row gap-4">
-                      <Image
+                      <img
                         src={IMAGE_URL + movie.backdrop_path}
                         alt={movie.title}
                         width={500}

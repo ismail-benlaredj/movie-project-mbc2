@@ -91,7 +91,7 @@ const MoviePoster = ({ movie }) => {
       <Link href={`/movie/${movie?.id}`} className="max-w-64 h-fit ">
         <div className="border-2 border-gray-800 rounded-2xl p-1">
           <div className="rounded-2xl ">
-            <Image
+            <img
               className="rounded-2xl"
               src={`${IMAGE_URL + movie.poster_path}`}
               width={500}

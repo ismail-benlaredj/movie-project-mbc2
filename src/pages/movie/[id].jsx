@@ -19,7 +19,7 @@ const MovieDetails = ({ movie, actors, similarMovies, movieVideoId }) => {
       <div className="flex flex-col">
         <div className="flex flex-row">
           <div className="w-1/3  p-3 box-border border border-gray-800">
-            <Image
+            <img
               src={`${IMAGE_URL + movie.poster_path}`}
               width={500}
               height={500}
@@ -60,7 +60,7 @@ const MovieDetails = ({ movie, actors, similarMovies, movieVideoId }) => {
               {actors.map((actor) => (
                 <Link href={`/actors/${actor.id}`} key={actor.id}>
                   <div className=" w-36 relative box-border">
-                    <Image
+                    <img
                       src={`${IMAGE_URL + actor.profile_path}`}
                       width={500}
                       height={500}
